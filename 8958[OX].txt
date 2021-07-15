@@ -1,0 +1,30 @@
+package BaekJoon;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); // 여기서 커서가 그대로 n의 줄에 위치해 있다.
+
+        for(int i = 0; i < n; i++) {
+            int sum = 0;
+	// 문제의 부분!!
+            String str = sc.next();
+            for(int j = 0; j < str.length(); j++) {
+                if (str.charAt(j) == 'O' && j > 0) {
+                    for(int k = j; k >= 0; k--) {
+                        if (str.charAt(k) == 'O') {
+                            sum++;
+                        } else if (str.charAt(k) == 'X') {
+                            break;
+                        }
+                    }
+                } else if (str.charAt(j) == 'O' && j == 0) {
+                    sum++;
+                }
+            }
+            System.out.println(sum);
+        }
+    }
+}
