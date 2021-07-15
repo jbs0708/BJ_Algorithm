@@ -1,0 +1,39 @@
+package BaekJoon;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine().toUpperCase();
+        sc.close();
+
+        int max = 0;
+        char ans = ' ';
+        boolean found = false;
+
+        for (int i = 0; i < str.length(); i++) {
+            int count = 0;
+	// < str.indexOf() >를 이용해 str.charAt(i)번째의 알파벳이 처음 등장한 것인지 아닌지 판별한다!
+            if (i==str.indexOf(str.charAt(i))) {
+                for(int j = i; j < str.length(); j++) {
+                    if (str.charAt(i) == str.charAt(j)) {
+                        count++;
+                    }
+                }
+                if (count > max) {
+                    max = count;
+                    ans = str.charAt(i);
+                    found = false;
+                } else if (count == max) {
+                    found = true;
+                }
+            }
+        }
+        if (!found) {
+            System.out.println(ans);
+        } else {
+            System.out.println("?");
+        }
+    }
+}
