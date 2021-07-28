@@ -1,0 +1,22 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Main{
+    public static void main(String[] args) throws IOException {
+        // <Scanner>  VS  <BufferedReader>
+        // Scanner
+        // 장점 : 타입변환과 파싱(parsing), 예외처리(throws IOException)가 불필요해서 간단
+        // 단점 : space와 enter 모두 하나하나 인식되어 시간이 오래걸림
+        // BufferedReader
+        // 장점 : Scanner와 엄청난 속도차이
+        // 단점 : 타입변환과 파싱(parsing), 예외처리(throws IOException)를 해줘야하는 번거로움
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
+        int V = Integer.parseInt(st.nextToken());
+
+        System.out.println((V-A)%(A-B)==0?((V-A)/(A-B))+1:((V-A)/(A-B))+2);
+    }
